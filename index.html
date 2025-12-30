@@ -3,41 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Message For You! 💖</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>A Special Delivery</title>
+    <style>
+        :root {
+            --bg: #F8F5F2; /* Creamy off-white */
+            --accent: #D4A373; /* Sophisticated gold/tan */
+            --pink: #F2CC8F; /* Soft muted peach */
+            --text: #3D405B;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Playfair Display', serif;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* The Glassmorphism Lock Screen */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: all 1s ease-in-out;
+        }
+
+        #lock-screen.unlocked {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        input {
+            border: none;
+            border-bottom: 2px solid var(--accent);
+            background: transparent;
+            padding: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+            outline: none;
+            color: var(--text);
+            width: 200px;
+        }
+
+        button {
+            background: var(--text);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent);
+        }
+
+        /* Content Styles */
+        .gift-card {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .code-container {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            border: 1px solid #eee;
+            color: var(--accent);
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>To My Amazing Best Friend!</h1>
-    </header>
+    <div id="lock-screen">
+        <h2 style="font-weight: 300; letter-spacing: 2px;">SECRET GALLERY</h2>
+        <div class="input-group">
+            <input type="password" id="passInput" placeholder="Enter Passcode">
+            <button onclick="checkPass()">ENTER</button>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">Check your DMs for the key.</p>
+    </div>
 
-    <main>
-        <section class="message-card">
-            <h2>A Little Note Just For You</h2>
-            <p>
-                Dear Anaya, My Best Friend Forever! This Is For  U Kindly Read This : Hey Anaya, I know things have felt a little distant between us lately, and I just wanted to reach out because I really miss spending quality time with you. You're my happy place, and honestly, you being less interested lately has made me feel a bit off. I truly value you and our friendship, and I want to figure out how we can reconnect. Maybe we can start doing trends we used to do and do funny talks rather than over thinking or fightinh? I'm here for you, no matter what, and I hope we can find our way back to being close.
-            </p>
-        </section>
+    <div class="gift-card">
+        <p style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; color: var(--accent);">Gift Receipt</p>
+        <h1 style="margin: 10px 0;">Enjoy, Artist! 🎨</h1>
+        <p style="font-family: sans-serif; font-size: 0.9rem; line-height: 1.6; color: #666;">
+            To the person who reads a thousand lives and draws even more. Here's a little something for your Roblox adventures.
+        </p>
+        
+        <div class="code-container" id="robloxCode">
+            XXXX-XXXX-XXXX
+        </div>
 
-        <section class="secret-section">
-            <button id="revealButton">Click Here for Your Surprise!</button>
+        <p style="font-size: 0.8rem; color: #bbb;">— Stay creative —</p>
+    </div>
 
-            <div id="giftCardContainer" class="hidden">
-                <h3>Your Gift is Ready!</h3>
-                <p>Enjoy a little treat on me! Use the code below:</p>
-                <div class="code-box">
-                    <p id="giftCode">GIFT-BFF-2025-XXXX</p> 
-                    </div>
-                <p class="disclaimer">Shhh... it's a secret!</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 From your favorite friend!</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            
+            // Set your chosen password here!
+            if (pass.toLowerCase() === "secret") { 
+                document.getElementById('lock-screen').classList.add('unlocked');
+            } else {
+                alert("That's not it! Ask me for the key 💌");
+            }
+        }
+    </script>
 </body>
 </html>
